@@ -44,16 +44,11 @@ namespace WeatherMonitorWorker
             // Задайте максимальное число одновременных подключений
             ServicePointManager.DefaultConnectionLimit = 12;
 
-            // Дополнительные сведения по управлению изменениями конфигурации
-            // см. раздел MSDN по ссылке http://go.microsoft.com/fwlink/?LinkId=166357.
-
             bool result = base.OnStart();
 
             // Open Azure Storage connection
             TargetCity = CloudConfigurationManager.GetSetting("City");
-
-            WeatherClient = new OpenWeatherMapClient("88597cb7a556c191905de0f52f23d7d6");
-
+            WeatherClient = new OpenWeatherMapClient(Config.OpenWeatherMapAPIKey);
             NumMinutes = int.Parse(CloudConfigurationManager.GetSetting("NumMinutes"));
 
             Trace.TraceInformation("WeatherMonitorWorker has been started");

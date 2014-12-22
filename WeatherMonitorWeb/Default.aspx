@@ -11,15 +11,13 @@
     <div class="row">
         <div class="col-md-4">
             <h2>Getting started</h2>
-            <asp:Chart ID="MainChart" runat="server" Height="600" Width="800">
-                <series>
-                    <asp:Series Name="MainSeries" ChartArea="MainChartArea" ChartType="Line">
-                    </asp:Series>
-                </series>
-                <chartareas>
-                    <asp:ChartArea Name="MainChartArea">
-                    </asp:ChartArea>
-                </chartareas>
+                <asp:Chart ID="MainChart" runat="server" Height="600" Width="800">
+                    <series>
+                        <asp:Series Name="MainSeries" ChartArea="MainChartArea" ChartType="Line"/>
+                    </series>
+                    <chartareas>
+                        <asp:ChartArea Name="MainChartArea" />
+                    </chartareas>
                 </asp:Chart>
         </div>
     </div>

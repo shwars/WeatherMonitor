@@ -14,13 +14,11 @@ namespace WeatherMonitorWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var q = new TableQuery<WeatherRecord>();
-            var res = WeatherDB.Table.ExecuteQuery(q);
-            var data = from z in res
-                       where z.WeatherInfoSource == WeatherInfoSource.WeatherService
-                       where z.ReadingType == ReadingType.Temperature
-                       orderby z.When descending
-                       select new { When = z.When, Data = z.Reading };
+            var data = from z in WeatherDB.GetData()
+                        where z.WeatherInfoSource == WeatherInfoSource.WeatherService
+                        where z.ReadingType == ReadingType.Temperature
+                        orderby z.When descending
+                        select new { When = z.When, Data = z.Reading };
             MainChart.Series[0].Points.DataBind(data, "When", "Data", "");
         }
     }
