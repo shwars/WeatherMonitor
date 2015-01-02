@@ -195,6 +195,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HumidityController.cs" />
+    <Compile Include="PressureController.cs" />
+    <Compile Include="LuminocityController.cs" />
     <Compile Include="TemperatureController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">

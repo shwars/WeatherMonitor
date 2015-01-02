@@ -10,7 +10,7 @@ namespace WeatherMonitorLib
 {
 
     public enum WeatherInfoSource { WeatherService, Device };
-    public enum ReadingType { Temperature, Humidity, Pressure };
+    public enum ReadingType { Temperature, Humidity, Pressure, Luminocity };
 
     public class WeatherRecord : TableEntity
     {
