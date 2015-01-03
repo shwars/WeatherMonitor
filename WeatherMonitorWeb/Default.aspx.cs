@@ -15,6 +15,18 @@ namespace WeatherMonitorWeb
         protected void Page_Load(object sender, EventArgs e)
         {
             ReadingType t = ReadingType.Temperature;
+            DateTime fr = DateTime.Now.AddYears(-1);
+            switch (ddTimePeriod.SelectedValue)
+            {
+                case "Day":
+                    fr = DateTime.Now.AddDays(-1); break;
+                case "Month":
+                    fr = DateTime.Now.AddMonths(-1); break;
+                case "Year":
+                    fr = DateTime.Now.AddYears(-1); break;
+                case "Week":
+                    fr = DateTime.Now.AddDays(-7); break;
+            }
             switch(ddDispType.SelectedValue)
             {
                 case "Temperature":
@@ -26,17 +38,20 @@ namespace WeatherMonitorWeb
                 case "Luminocity":
                     t = ReadingType.Luminocity; break;
             }
-            var data = from z in WeatherDB.GetData()
+            var db = WeatherDB.GetData();
+            var data = from z in db
                         where z.WeatherInfoSource == WeatherInfoSource.WeatherService
                         where z.ReadingType == t
+                        where z.When > fr
                         orderby z.When descending
                         select new { When = z.When, Data = z.Reading };
             MainChart.Series[0].Points.DataBind(data, "When", "Data", "");
-            var rdata = from z in WeatherDB.GetData()
-                       where z.WeatherInfoSource == WeatherInfoSource.Device
-                       where z.ReadingType == t
-                       orderby z.When descending
-                       select new { When = z.When, Data = z.Reading };
+            var rdata = from z in db
+                           where z.WeatherInfoSource == WeatherInfoSource.Device
+                           where z.ReadingType == t
+                           where z.When > fr
+                           orderby z.When descending
+                           select new { When = z.When, Data = z.Reading };
             MainChart.Series[1].Points.DataBind(rdata, "When", "Data", "");
         }
     }

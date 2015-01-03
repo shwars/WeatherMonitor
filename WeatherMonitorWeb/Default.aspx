@@ -27,6 +27,12 @@
                 <asp:ListItem Value="Humidity" />
                 <asp:ListItem Value="Luminocity" />
             </asp:DropDownList>
+            <asp:DropDownList runat="server" AutoPostBack="True" ID="ddTimePeriod">
+                <asp:ListItem Value="Day" />
+                <asp:ListItem Value="Week" />
+                <asp:ListItem Value="Month" />
+                <asp:ListItem Value="Year" />
+            </asp:DropDownList>
         </div>
     </div>
 
