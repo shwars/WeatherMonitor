@@ -46,6 +46,20 @@ namespace WeatherMonitorLib
             return WeatherDB.Table.ExecuteQuery(q);
         }
 
+        // Returns current (most recent) readings for the given reading type
+        // but only within last 10 minutes.
+        public static WeatherRecord[] GetCurrentReading(ReadingType type)
+        {
+            var data = (from z in WeatherDB.Table.CreateQuery<WeatherRecord>()
+                       where z.When > DateTime.Now.AddMinutes(-10)
+                       // where z.ReadingType == type
+                       select z).ToList();
+            var res = from z in data
+                      where z.ReadingType == type
+                      group z by z.WeatherInfoSource into g
+                      select g.OrderByDescending(x => x.When).First();
+            return res.ToArray();
+        }
 
     }
 }

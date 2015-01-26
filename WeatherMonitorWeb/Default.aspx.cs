@@ -45,7 +45,7 @@ namespace WeatherMonitorWeb
                         where z.When > fr
                         orderby z.When descending
                         select new { When = z.When, Data = z.Reading };
-            MainChart.Series[0].Points.DataBind(data, "When", "Data", "");
+            MainChart.Series[0].Points.DataBind(data,"When", "Data", "");
             var rdata = from z in db
                            where z.WeatherInfoSource == WeatherInfoSource.Device
                            where z.ReadingType == t

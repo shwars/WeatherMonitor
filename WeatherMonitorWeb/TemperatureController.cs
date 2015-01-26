@@ -12,9 +12,9 @@ namespace WeatherMonitorWeb
     public class TemperatureController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public WeatherRecord[] Get()
         {
-            return new string[] { "value1", "value2" };
+            return WeatherDB.GetCurrentReading(ReadingType.Temperature);
         }
 
         // GET api/<controller>/5

@@ -12,9 +12,9 @@ namespace WeatherMonitorWeb
     public class HumidityController : ApiController
     {
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public WeatherRecord[] Get()
         {
-            return new string[] { "value1", "value2" };
+            return WeatherDB.GetCurrentReading(ReadingType.Humidity);
         }
 
         // GET api/<controller>/5
