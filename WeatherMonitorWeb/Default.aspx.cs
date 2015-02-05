@@ -38,7 +38,7 @@ namespace WeatherMonitorWeb
                 case "Luminocity":
                     t = ReadingType.Luminocity; break;
             }
-            var db = WeatherDB.GetData();
+            var db = WeatherDB.GetDataAfter(fr);
             var data = from z in db
                         where z.WeatherInfoSource == WeatherInfoSource.WeatherService
                         where z.ReadingType == t
