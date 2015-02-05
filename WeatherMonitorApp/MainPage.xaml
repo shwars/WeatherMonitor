@@ -16,9 +16,12 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="40">Temperature:</TextBlock>
@@ -31,5 +34,13 @@
             <TextBlock x:Name="Lum" Width="140" FontSize="40"></TextBlock>
             <Rectangle x:Name="LumR" Width="50" Height="50" Fill="Gray"/>
         </StackPanel>
+        <TextBlock Grid.Row="5" Grid.ColumnSpan="2" FontSize="40">Pressure:</TextBlock>
+        <TextBlock x:Name="PresOut" Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" FontSize="50"/>
+        <TextBlock x:Name="PresService" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" FontSize="50"/>
+        <TextBlock x:Name="PresOutCmt" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="0"/>
+        <TextBlock x:Name="PresServiceCmt" HorizontalAlignment="Right" Grid.Row="7" Grid.Column="1"/>
+        <TextBlock x:Name="log" Grid.Row="8" Grid.ColumnSpan="2" Margin="10,40,10,10" Foreground="Green" FontSize="12">
+        Starting application...<LineBreak/>
+        </TextBlock>
     </Grid>
 </Page>

@@ -71,7 +71,6 @@ namespace WeatherMonitorWorker
 
         private async Task RunAsync(CancellationToken cancellationToken)
         {
-            // TODO: замените следующее собственной логикой.
             while (!cancellationToken.IsCancellationRequested)
             {
                 var Weather = await WeatherClient.CurrentWeather.GetByName(TargetCity,MetricSystem.Metric);

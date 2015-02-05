@@ -10,7 +10,6 @@ namespace WeatherMonitorWeb
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Код, выполняемый при запуске приложения
             RouteTable.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
